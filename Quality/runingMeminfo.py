@@ -21,7 +21,7 @@ rsFilePath = os.path.join(rsDir,"result.txt")
 
 def getPid(devices):
     output = subprocess.getoutput("adb -s %s shell ps |findstr monkey"%devices)
-    if output is not None and "error" not in output :
+    if len(output)>0 and "error" not in output :
         print("True")
         return True
     else:
@@ -87,7 +87,8 @@ if __name__=="__main__":
         "2":"com.tct.calculator",
         "3":"com.tct.video",
         "4":"com.hawk.android.browser",
-        "5":"com.tct.calendar"
+        "5":"com.tct.calendar",
+        "6":"com.gameloft.android.GloftSOMP"
     }
     print("""
         获取RAM运行时内存,间隔1分钟一次
@@ -96,6 +97,7 @@ if __name__=="__main__":
         3.com.tct.video
         4.com.hawk.android.browser
         5.com.tct.calendar
+        6.com.gameloft.android.GloftSOMP
     """)
     val = input("请输入对应包名序号:")
     packageName = dict[val]
