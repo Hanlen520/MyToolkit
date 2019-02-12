@@ -128,7 +128,8 @@ if __name__=="__main__":
         "3":"com.tct.video",
         "4":"com.hawk.android.browser",
         "5":"com.tct.calendar",
-        "6":"com.gameloft.android.GloftMC4M"
+        "6":"com.gameloft.android.GloftMC4M",
+        "7":"com.android.vending"
     }
     print("""
         获取RAM运行时内存,间隔1分钟一次
@@ -138,6 +139,7 @@ if __name__=="__main__":
         4.com.hawk.android.browser
         5.com.tct.calendar
         6.com.gameloft.android.GloftMC4M
+        7:com.android.vending
     """)
     val = input("请输入对应包名序号:")
     packageName = dict[val]
