@@ -35,7 +35,7 @@ def runMonkey(packagename,devices):
     count =1
     while getPid(devices):
         meminfoPath = os.path.join(rsDir,"meminfo%s.txt"%count)
-        cmd = "adb -s %s shell dumpsys meminfo > %s"%(devices,meminfoPath)
+        cmd = "adb -s %s shell dumpsys -t 50 meminfo --oom> %s"%(devices,meminfoPath)
         subprocess.Popen(cmd,shell=True,stderr=subprocess.PIPE,stdout=subprocess.PIPE)
         time.sleep(1*60)
         count += 1
