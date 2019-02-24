@@ -86,30 +86,29 @@ def logcat(devices):
 
 
 if __name__=="__main__":
-    readFile("com.tct.video",8)
-    # dict = {
-    #     "1":"com.tct.note",
-    #     "2":"com.tct.calculator",
-    #     "3":"com.tct.video",
-    #     "4":"com.hawk.android.browser",
-    #     "5":"com.tct.calendar",
-    #     "6":"com.gameloft.android.GloftSOMP"
-    # }
-    # print("""
-    #     获取RAM运行时内存,间隔2分钟一次
-    #     1.com.tct.note
-    #     2.com.tct.calculator
-    #     3.com.tct.video
-    #     4.com.hawk.android.browser
-    #     5.com.tct.calendar
-    #     6.com.gameloft.android.GloftSOMP
-    # """)
-    # val = input("请输入对应包名序号:")
-    # packageName = dict[val]
-    # devices = getdevices()
-    # if len(devices)>0:
-    #     runMonkey(packagename=packageName,devices=devices[0])
-    # else:
-    #     print("设备连接异常")
+    dict = {
+        "1":"com.tct.note",
+        "2":"com.tct.calculator",
+        "3":"com.tct.video",
+        "4":"com.hawk.android.browser",
+        "5":"com.tct.calendar",
+        "6":"com.gameloft.android.GloftSOMP"
+    }
+    print("""
+        获取RAM运行时内存,间隔2分钟一次
+        1.com.tct.note
+        2.com.tct.calculator
+        3.com.tct.video
+        4.com.hawk.android.browser
+        5.com.tct.calendar
+        6.com.gameloft.android.GloftSOMP
+    """)
+    val = input("请输入对应包名序号:")
+    packageName = dict[val]
+    devices = getdevices()
+    if len(devices)>0:
+        runMonkey(packagename=packageName,devices=devices[0])
+    else:
+        print("设备连接异常")
 
 
