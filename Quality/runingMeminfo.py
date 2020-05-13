@@ -5,7 +5,9 @@
 # @File    : runingMeminfo.py
 # @desc    : APK运行时RAM的占用情况
 """
+专用于 预装性能测试要求(apk运行时RAM占用情况)
 每隔1分钟记录一次meminfo数据
+monkey命令运行时,每隔1分钟记录一次meminfo数据,然后读取result目录下所有meminfo*.txt中对应包名的RAM使用数据
 """
 import os,subprocess,time
 
@@ -51,10 +53,6 @@ def readFile(packagename,count):
         rs.append(fileName)
         lines = file.readlines()
         for line in lines:
-            # print(line)
-            # if "Total PSS by OOM adjustment" in line:
-            #     break;
-            # else:
             if packagename in line:
                 temp.append(line)
         rs.append(temp)
@@ -88,7 +86,7 @@ def logcat(devices):
 if __name__=="__main__":
     dict = {
         "1":"com.tct.note",
-        "2":"com.tct.calculator",
+        "2":"com.tcl.calculator",
         "3":"com.tct.video",
         "4":"com.hawk.android.browser",
         "5":"com.tct.calendar",
@@ -97,7 +95,7 @@ if __name__=="__main__":
     print("""
         获取RAM运行时内存,间隔2分钟一次
         1.com.tct.note
-        2.com.tct.calculator
+        2.com.tcl.calculator
         3.com.tct.video
         4.com.hawk.android.browser
         5.com.tct.calendar
