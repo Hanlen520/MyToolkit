@@ -3,7 +3,7 @@
 # @Time    : 2018/11/23 10:54
 # @Author  : qingping.niu
 # @File    : Rom.py
-# @desc    :
+# @desc    : 获取rom大小(区分32和64位机器)
 
 import os,subprocess
 
