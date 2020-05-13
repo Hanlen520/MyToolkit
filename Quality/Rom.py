@@ -124,7 +124,7 @@ def getdevices():
 if __name__=="__main__":
     dict = {
         "1":"com.tct.note",
-        "2":"com.tct.calculator",
+        "2":"com.tcl.calculator",
         "3":"com.tct.video",
         "4":"com.hawk.android.browser",
         "5":"com.tct.calendar",
@@ -132,9 +132,9 @@ if __name__=="__main__":
         "7":"com.android.vending"
     }
     print("""
-        获取RAM运行时内存,间隔1分钟一次
+        获取ROM大小
         1.com.tct.note
-        2.com.tct.calculator
+        2.com.tcl.calculator
         3.com.tct.video
         4.com.hawk.android.browser
         5.com.tct.calendar
