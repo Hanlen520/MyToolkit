@@ -9,6 +9,7 @@ from xml.dom.minidom import parse
 # sys.setdefaultencoding( "utf-8" )
 """
 多语言验证脚本,适用于APK
+适合python 版本3.0以上
 请先检查默认语言(如默认语言是英文情况下,比对的是values-en, 实际是 values
 """
 class TranslateXml(object):
@@ -134,32 +135,32 @@ class TranslateXml(object):
             print("check " + language + " is passed!")
         else:
             print("check " + language + " is failed, please check the details as below:")
-            print ("================values_from_xml==========================")
-            print ("path is " + file_path)
+            print("================values_from_xml==========================")
+            print("path is " + file_path)
             # print values_from_xml.keys()
             # print values_from_excel.keys()
             for key in filter(lambda x:values_from_excel[x] != values_from_xml[x], values_from_xml):
                 # print "%s : %s"%(key,values_from_xml[key])
-                print (key + ":")
-                print (values_from_xml[key].encode("utf-8"))
-            print ("************values_from_excel****************************")
+                print(key + ":")
+                print(values_from_xml[key].encode("utf-8"))
+            print("************values_from_excel****************************")
             for key in filter(lambda x:values_from_xml[x] != values_from_excel[x], values_from_excel):
-                print (key + ":")
-                print (values_from_excel[key].encode("utf-8"))
+                print(key + ":")
+                print(values_from_excel[key].encode("utf-8"))
 
     def main(self):
         languages_from_excel = self.languages_from_excel()
         languages_from_defined = self.languages_from_defined()
 
         if len(list(filter(lambda x: x in languages_from_defined, languages_from_excel))) == len(languages_from_excel):
-            print ("all languages are existed in excel, check is passed!")
+            print("all languages are existed in excel, check is passed!")
         else:
-            print (filter(lambda x: x not in languages_from_defined, languages_from_excel))
+            print(filter(lambda x: x not in languages_from_defined, languages_from_excel))
         if len(list(filter(lambda x: os.path.isdir(os.path.join(self.base_folder, "values-" + self.lang_tables[x])) and os.path.isfile(os.path.join(self.base_folder, "values-" + self.lang_tables[x]) + "\\" + "strings.xml"), languages_from_excel))) == len(languages_from_excel):
-            print ("all strings.xml file and corresponding folder are existed!")
+            print("all strings.xml file and corresponding folder are existed!")
         else:
-            print ("the below languages are missed from xml files:")
-            print (list(filter(lambda x: not os.path.isdir(os.path.join(self.base_folder, "values-" + self.lang_tables[x])) or not os.path.isfile(os.path.join(self.base_folder, "values-" + self.lang_tables[x]) + "\\" + "strings.xml"), languages_from_excel)))
+            print("the below languages are missed from xml files:")
+            print(list(filter(lambda x: not os.path.isdir(os.path.join(self.base_folder, "values-" + self.lang_tables[x])) or not os.path.isfile(os.path.join(self.base_folder, "values-" + self.lang_tables[x]) + "\\" + "strings.xml"), languages_from_excel)))
             for item in filter(lambda x: not os.path.isdir(os.path.join(self.base_folder, "values-" + self.lang_tables[x])) or not os.path.isfile(os.path.join(self.base_folder, "values-" + self.lang_tables[x]) + "\\" + "strings.xml"), languages_from_excel):
                 del languages_from_excel[languages_from_excel.index(item)]
 
@@ -168,7 +169,7 @@ class TranslateXml(object):
             for key in values_from_xml.keys():
                 if "'" in values_from_xml[key]:
                     if values_from_xml[key][0] != '"' or values_from_xml[key][-1] != '"':
-                        print ('string is not start and end with "' + " and language is " + language + ", please check " + os.path.join(self.base_folder, "values-" + self.lang_tables[language]) + "\\" + "strings.xml ", " for key " + key)
+                        print('string is not start and end with "' + " and language is " + language + ", please check " + os.path.join(self.base_folder, "values-" + self.lang_tables[language]) + "\\" + "strings.xml ", " for key " + key)
                     else:
                         values_from_xml[key] = values_from_xml[key][1:-1]
                     values_from_xml[key] = values_from_xml[key]
